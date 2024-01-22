@@ -10,7 +10,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="electronics.css"/>
-  <title>Log In!</title>
+  <title>Admin Log In!</title>
 </head> 
 <body>
   <?php
@@ -23,17 +23,29 @@
     $pdo = get_pdo('sys','mysql','student','student');
 
     $response = authenticator($pdo,'sys.logins',sha1($_POST['username']),sha1($_POST['username'].$_POST['password']));
-
+    #################
+    echo '<H1>I AM IN!!</H1>';
+    echo sha1('j.arora@phm-accountants.co.uk');
+    echo 'THE PASSWORD : ' . sha1('j.arora@phm-accountants.co.ukjatin123') . ' ------------';
+    echo '\n';
+    echo sha1($_POST['username'].$_POST['password']);
+    echo $response;
+    
     if ($response == 1){
       $pdo = get_pdo('sys','mysql','student','student');
-      $results = get_conditional($pdo,'customers','email',$_POST['username']);
+      $results = get_conditional($pdo,'admins','email',$_POST['username']);
+      #echo $results;
       foreach($results as $result){
         $_SESSION['logged'] = TRUE;
-        $_SESSION['cust_id'] = $result['cust_id'];
-        $_SESSION['cust_name']  = $result['first_name'];
-        unset($_POST['submit']);
+        $_SESSION['admin_id'] = $result['admin_id'];
+        $_SESSION['admin_name']  = $result['admin_name'];
+        $_SESSION['admin_email'] = $result['email'];
+        #echo load_template('../templates/layout.php',['output' => 'index.php']);
+        echo 'HELLO';
         echo load_template('index.php',[]);
-      }
+        unset($_POST['submit']);
+
+      } 
       
     } else {
       $_SESSION['logged'] = FALSE;
@@ -43,14 +55,12 @@
 
   }else {
 ?>
-    <h2>LOGIN</h2>
-    <form action="" method="post">
+    <h1>Admin Login</H1>
+    <form action="adminlogin.php" method="post">
         <label>USERNAME</label> <input type="text" name="username" />
         <label>PASSWORD</label> <input type="text" name="password" />
-        <label><a href="https://as1.v.je/signup.php">SIGNUP HERE!!</label>
-        <label><a href="https://as1.v.je/adminlogin.php">ADMIN LOGIN HERE!!</label>
         <input type="submit" name="submit" value="submit" />
-    </form>
+    </form>';
 
   <?php } ?>
         

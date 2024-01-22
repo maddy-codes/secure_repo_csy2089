@@ -12,7 +12,7 @@ $pdo=get_pdo('sys','mysql','student','student');
 <ul>
     <h1> These are our top 10 Items  </h1><hr> 
     <?php 
-        $results = get_specific($pdo,'products',10);
+        $results = get_top_latest($pdo,'products','date_added','DESC',10);
 
         foreach ($results as $result){
     ?>        

@@ -5,11 +5,16 @@
     require_once '../templates/functions.php';
 
     if ( isset($_SESSION['logged'])){
-        #var_dump($_SESSION);
+        if ($_SESSION['logged'] == TRUE){
+            #var_dump($_SESSION);
+            echo load_template('../templates/layout.php',['output' => load_template('../templates/main.html.php',[])]);
+        }
+        else{
+            echo load_template('login.php',[]);
+        }
         
-        echo load_template('../templates/layout.php',['output' => load_template('../templates/main.html.php',[])]);
     } else {
-        require 'login.php';
+        echo load_template('login.php',[]);
     }
     
 ?>

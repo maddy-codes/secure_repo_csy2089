@@ -89,3 +89,16 @@
             </div>
         </li>
     </ul>
+
+
+
+    insert_row($pdo,'products',
+    [
+        'prod_name' => $_POST['prod_name'],
+        'prod_description' => $_POST['prod_description'],
+        'manufacturer' => $_POST['manufacturer'],
+        'price' => $_POST['price'],
+        'image_name' => $_FILES['image']['name'],
+        'catg_id' => $_POST['category'],
+        'date_added' => ''
+    ]);

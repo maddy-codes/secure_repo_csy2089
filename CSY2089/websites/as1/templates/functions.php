@@ -1,6 +1,5 @@
 <?php
 
-
 function load_template($path,$template_vars){
     ob_start();
     extract($template_vars);
@@ -67,7 +66,7 @@ function authenticator($pdo,$table_name, $username,$password){
 function query_resolver($query_string){
     $arr = explode('&',$query_string);
     $arr = implode('=',$arr);
-    echo($arr);
+    #echo($arr);
     $arr = explode('=',$arr);
     $new_arr = [];
     for ($x = 0; $x <= count($arr); $x = $x+2){
@@ -76,6 +75,12 @@ function query_resolver($query_string){
         }
     }
     return $new_arr;
+}
+
+function get_top_latest($pdo,$table,$column_to_sort,$order,$top_n){
+    $stmt = $pdo->prepare('SELECT * FROM '.$table.' ORDER BY '.$column_to_sort.' '.$order.' LIMIT '. $top_n);
+    $stmt->execute([]);
+    return $stmt;
 }
 
 ?>

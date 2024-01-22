@@ -49,10 +49,12 @@ p {margin-top: 0.5em; margin-bottom: 0.5em;}
 
 
 h2 {margin-top: 0.5em;  margin-bottom: 0.5em;}
-form label, form input, form textarea {margin-top: 1em; margin-bottom: 1em ;box-sizing: border-box;  display: block; width: 46%; padding: 2%; float: left;}
+
+form label, form input, form textarea {margin-top: 1em; margin-bottom: 1em ;box-sizing: border-box;  display: block; width: 46%; padding: 2%; /*float: left;*/}
 form textarea {height: 400px;}
-form input[type="submit"] {margin-left: 46%;}
+form input[type="submit"] /*{margin-left: 46%;}*/
 form {overflow: auto;}
+
 
 .products, .reviews {list-style-type: none;}
 .products li, .reviews li {padding: 2em;}

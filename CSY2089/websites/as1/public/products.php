@@ -9,6 +9,6 @@ require_once '../templates/functions.php';
 $query = $_SERVER['QUERY_STRING'];
 
 $lol = query_resolver($query);
-var_dump($lol); 
+//var_dump($lol); 
 echo load_template('../templates/layout.php',['output' => load_template('../templates/products.html.php',$lol)]);
 ?>

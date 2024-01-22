@@ -10,7 +10,7 @@
         <header>
             <h1>Ed's Electronics</h1>
             <ul>
-                <li> Home </li>
+                <li><a href='/'> Home </a></li>
                 <li> Products 
                     <ul>
             <?php
@@ -23,7 +23,6 @@
                
                <?php }
                 require('links.php')
-
                 ?>
                 </ul>
                 </li>
@@ -52,6 +51,17 @@
             <p><strong>Gaming PC</strong></p>
             <p>Brand new 8 core computer with an RTX 4080 </p>
 
+            <h1><a href="questions.php">See All Your Questions</a></h1>
+
+            <?php
+                if(isset($_SESSION['admin_id'])){
+            ?>
+                 <h1><a href="add_product.php">Add Product</a></h1>
+                 <h1><a href="add_category.php">Add Categoty</a></h1>
+                 <h1><a href="add_admin.php">Make More Admin</a></h1>
+            <?php
+                }
+            ?>
         </aside>
 
         <footer>
