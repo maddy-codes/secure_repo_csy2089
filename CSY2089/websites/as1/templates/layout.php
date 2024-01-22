@@ -56,9 +56,12 @@
             <?php
                 if(isset($_SESSION['admin_id'])){
             ?>
+                 <h1><a href="questions.php?filtered=True">See Unanswered Questions</a></h1>
+                 <h1><a href="add_admin.php?global=True">See All Questions</a></h1>
                  <h1><a href="add_product.php">Add Product</a></h1>
                  <h1><a href="add_category.php">Add Categoty</a></h1>
                  <h1><a href="add_admin.php">Make More Admin</a></h1>
+                 
             <?php
                 }
             ?>
