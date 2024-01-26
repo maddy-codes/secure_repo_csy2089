@@ -26,7 +26,27 @@
                 ?>
                 </ul>
                 </li>
-            <ul>
+                <li>
+                    Logins
+                        <ul>
+                            <li>
+                                <a href="login.php">
+                                Customer Login
+                                </a>
+                            </li>
+                            <li>
+                                <a href="signup.php">
+                                Customer Signup
+                                </a>
+                            </li>
+                            <li>
+                                <a href="adminlogin.php">
+                                Admin Login
+                                </a>
+                            </li>
+                        </ul>
+                </li>
+            </ul>
 
             <address>
                 <p>We are open 9-5, 7 days a week. Call us on
@@ -50,14 +70,20 @@
             <h1><a href="#">Featured Product</a></h1>
             <p><strong>Gaming PC</strong></p>
             <p>Brand new 8 core computer with an RTX 4080 </p>
+            
+            <?php
+                if(isset($_SESSION['cust_id'])){
+            ?>
 
-            <h1><a href="questions.php">See All Your Questions</a></h1>
+                <h1><a href="questions.php">See All Your Questions</a></h1>
 
             <?php
-                if(isset($_SESSION['admin_id'])){
+                } elseif(isset($_SESSION['admin_id'])){
             ?>
+                 <h1><a href="questions.php?global=NO">See All Your Questions</a></h1>
                  <h1><a href="questions.php?filtered=True">See Unanswered Questions</a></h1>
-                 <h1><a href="add_admin.php?global=True">See All Questions</a></h1>
+                 <h1><a href="questions.php?global=True">See All Questions</a></h1>
+                 <h1><a href="answer.php">Answer / Approve Questions</a></h1>
                  <h1><a href="add_product.php">Add Product</a></h1>
                  <h1><a href="add_category.php">Add Categoty</a></h1>
                  <h1><a href="add_admin.php">Make More Admin</a></h1>

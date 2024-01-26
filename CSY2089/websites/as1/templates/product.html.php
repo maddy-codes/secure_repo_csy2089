@@ -2,7 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once '../templates/functions.php';
+require_once '../functions/functions.php';
 ?>
 <H1>Previous Questions</H1>
 <ul>
@@ -35,7 +35,14 @@ require_once '../templates/functions.php';
         $pdo = get_pdo('sys','mysql','student','student');
         insert_row($pdo,'questions',['question' => $_POST['question'],
             'cust_id' => $_SESSION['cust_id'], 'is_answered' => 'N', 'is_approved' => 'N', 'prod_id' => $prod_id
-        ])
+    ]);
+        $results =getall($pdo,'admins');
+        foreach($results as $result){
+            $to = $result['email'];
+            $subject = "New Question Added";
+            $message = "A question has been added by " . $_SESSION['cust_name'];
+            mail($to, $subject, $message);
+        }
         ?>
         <H1> Thank you <?= $_SESSION['cust_name']?> for submitting your question. We will reply as soon as possible!</H1>
     <?php    

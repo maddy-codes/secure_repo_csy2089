@@ -5,7 +5,7 @@
 <hr>
 
 <?php 
-require_once '../templates/functions.php';
+require_once '../functions/functions.php';
 $pdo=get_pdo('sys','mysql','student','student');
 ?>
 

@@ -2,7 +2,7 @@
     if (session_status() === PHP_SESSION_NONE) {
     session_start();
   }
-  require '../templates/functions.php';
+  require_once '../functions/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">

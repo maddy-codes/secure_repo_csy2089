@@ -2,8 +2,7 @@
 if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
-require_once '../templates/functions.php';
-
+require_once '../functions/functions.php';
 ?>
 
 <form action="add_admin.php" method="post">

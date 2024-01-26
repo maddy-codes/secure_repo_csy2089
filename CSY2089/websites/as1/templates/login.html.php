@@ -3,6 +3,7 @@
     session_start();
     $_SESSION['logged'] = FALSE;
     }
+    require_once '../functions/functions.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -14,7 +15,6 @@
 </head> 
 <body>
   <?php
-  require_once '../templates/functions.php';
   if  (isset($_POST['submit'])){
     $arguments = ["username"=>sha1($_POST['username']), 
     "password"=>sha1($_POST['username'].$_POST['password']),
@@ -23,7 +23,7 @@
     $pdo = get_pdo('sys','mysql','student','student');
 
     $response = authenticator($pdo,'sys.logins',sha1($_POST['username']),sha1($_POST['username'].$_POST['password']));
-
+ 
     if ($response == 1){
       $pdo = get_pdo('sys','mysql','student','student');
       $results = get_conditional($pdo,'customers','email',$_POST['username']);
@@ -31,6 +31,7 @@
         $_SESSION['logged'] = TRUE;
         $_SESSION['cust_id'] = $result['cust_id'];
         $_SESSION['cust_name']  = $result['first_name'];
+        $_SESSION['cust_email'] = $result['email'];
         unset($_POST['submit']);
         echo load_template('index.php',[]);
       }
